@@ -1,0 +1,3814 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GestãoPro • Cozinha Escolar</title>
+
+<style>
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+:root{
+
+    --bg:#07131d;
+
+    --bg2:#0b1b27;
+
+    --card:#0d202d;
+
+    --card2:#102635;
+
+    --vinho:#8f315d;
+
+    --vinho2:#b34273;
+
+    --dourado:#d4aa5c;
+
+    --texto:#f5f7fa;
+
+    --muted:#91a0ad;
+
+    --borda:#203746;
+
+    --verde:#35c78a;
+
+    --verde-bg:#0d3b2c;
+
+    --amarelo:#e9b949;
+
+    --amarelo-bg:#3b3014;
+
+    --vermelho:#ef6262;
+
+    --vermelho-bg:#421d23;
+
+}
+
+body{
+
+    font-family:Inter,Arial,Helvetica,sans-serif;
+
+    background:var(--bg);
+
+    color:var(--texto);
+
+}
+
+/* =========================
+
+   LAYOUT
+
+\========================= */
+
+.app{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* =========================
+
+   SIDEBAR
+
+\========================= */
+
+.sidebar{
+
+    width:220px;
+
+    background:#061019;
+
+    border-right:1px solid var(--borda);
+
+    padding:22px 14px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:35px;
+
+}
+
+.logo-icon{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--vinho),
+
+        var(--vinho2)
+
+    );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+}
+
+.logo strong{
+
+    display:block;
+
+    font-size:17px;
+
+}
+
+.logo span{
+
+    color:#df5d91;
+
+    font-size:11px;
+
+}
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+}
+
+.menu button{
+
+    border:0;
+
+    background:transparent;
+
+    color:#aab6c0;
+
+    padding:13px 12px;
+
+    border-radius:9px;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+}
+
+.menu button:hover,
+
+.menu button.ativo{
+
+    background:rgba(143,49,93,.28);
+
+    color:white;
+
+}
+
+.sair{
+
+    margin-top:auto;
+
+    padding:13px;
+
+    border:1px solid var(--borda);
+
+    border-radius:9px;
+
+    color:#aab6c0;
+
+    text-align:center;
+
+}
+
+/* =========================
+
+   CONTEÚDO
+
+\========================= */
+
+.main{
+
+    flex:1;
+
+    padding:24px 26px;
+
+    overflow:hidden;
+
+}
+
+.topo{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:22px;
+
+}
+
+.topo h1{
+
+    font-size:25px;
+
+}
+
+.topo h1 span{
+
+    color:#df5d91;
+
+}
+
+.subtitulo{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    margin-top:5px;
+
+}
+
+.usuario{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.online{
+
+    color:var(--verde);
+
+    font-size:13px;
+
+}
+
+.avatar{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    background:var(--vinho);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:bold;
+
+}
+
+/* =========================
+
+   BANNER
+
+\========================= */
+
+.banner{
+
+    min-height:155px;
+
+    border:1px solid #6c2947;
+
+    border-radius:14px;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            rgba(60,12,34,.9),
+
+            rgba(55,17,39,.55)
+
+        ),
+
+        linear-gradient(
+
+            135deg,
+
+            #3c1229,
+
+            #18212f
+
+        );
+
+    padding:28px;
+
+    margin-bottom:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.tag{
+
+    width:max-content;
+
+    background:var(--dourado);
+
+    color:#351b29;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    text-transform:uppercase;
+
+    margin-bottom:10px;
+
+}
+
+.banner h2{
+
+    font-size:28px;
+
+    margin-bottom:8px;
+
+}
+
+.banner p{
+
+    color:#ddd;
+
+    font-size:13px;
+
+    max-width:650px;
+
+    line-height:1.5;
+
+}
+
+/* =========================
+
+   CABEÇALHO
+
+\========================= */
+
+.section-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:14px;
+
+}
+
+.section-title h2{
+
+    font-size:22px;
+
+}
+
+.section-title p{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+}
+
+.btn{
+
+    border:1px solid var(--borda);
+
+    background:var(--card);
+
+    color:white;
+
+    padding:10px 15px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+.btn:hover{
+
+    border-color:var(--vinho2);
+
+}
+
+/* =========================
+
+   CARDS
+
+\========================= */
+
+.card{
+
+    background:linear-gradient(
+
+        145deg,
+
+        var(--card),
+
+        #091a25
+
+    );
+
+    border:1px solid var(--borda);
+
+    border-radius:13px;
+
+    margin-bottom:20px;
+
+    overflow:hidden;
+
+}
+
+.card-header{
+
+    padding:17px 20px;
+
+    border-bottom:1px solid var(--borda);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.card-header h3{
+
+    font-size:15px;
+
+}
+
+.card-header span{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+}
+
+.card-body{
+
+    padding:20px;
+
+}
+
+/* =========================
+
+   NOVA ATRIBUIÇÃO
+
+\========================= */
+
+.formulario{
+
+    display:grid;
+
+    grid-template-columns:250px 1fr 120px;
+
+    gap:18px;
+
+    align-items:start;
+
+}
+
+.campo{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.campo label{
+
+    color:#b7c1c9;
+
+    font-size:12px;
+
+    margin-bottom:8px;
+
+}
+
+input,
+
+select{
+
+    height:43px;
+
+    background:#091923;
+
+    border:1px solid #29404f;
+
+    color:white;
+
+    border-radius:7px;
+
+    padding:0 12px;
+
+    outline:none;
+
+}
+
+input:focus,
+
+select:focus{
+
+    border-color:var(--vinho2);
+
+}
+
+.btn-adicionar{
+
+    margin-top:20px;
+
+    height:43px;
+
+    border:1px solid var(--dourado);
+
+    background:rgba(212,170,92,.08);
+
+    color:var(--dourado);
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.btn-salvar{
+
+    margin-top:20px;
+
+    height:43px;
+
+    border:0;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--vinho),
+
+        var(--vinho2)
+
+    );
+
+    color:white;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+/* =========================
+
+   FUNCIONÁRIO
+
+\========================= */
+
+.lista-funcionarios{
+
+    position:relative;
+
+    margin-top:5px;
+
+    background:#102431;
+
+    border:1px solid var(--borda);
+
+    border-radius:8px;
+
+    display:none;
+
+    overflow:hidden;
+
+    z-index:20;
+
+}
+
+.lista-funcionarios.aberta{
+
+    display:block;
+
+}
+
+.funcionario-opcao{
+
+    width:100%;
+
+    padding:10px 12px;
+
+    border:0;
+
+    border-bottom:1px solid var(--borda);
+
+    background:transparent;
+
+    color:white;
+
+    text-align:left;
+
+    cursor:pointer;
+
+}
+
+.funcionario-opcao:hover{
+
+    background:#162f40;
+
+}
+
+.status-dot{
+
+    width:8px;
+
+    height:8px;
+
+    display:inline-block;
+
+    border-radius:50%;
+
+    margin-right:8px;
+
+    background:var(--vermelho);
+
+}
+
+.funcionario-opcao.preenchido .status-dot{
+
+    background:var(--verde);
+
+}
+
+.funcionario-opcao.andamento .status-dot{
+
+    background:var(--amarelo);
+
+}
+
+/* =========================
+
+   FUNÇÕES SELECIONADAS
+
+\========================= */
+
+.funcoes-selecionadas{
+
+    margin-top:10px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+}
+
+.funcao-tag{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#251a26;
+
+    border:1px solid #573248;
+
+    border-radius:8px;
+
+    padding:9px 12px;
+
+    font-size:12px;
+
+}
+
+.funcao-tag strong{
+
+    color:#f0d9a5;
+
+}
+
+.funcao-tag span{
+
+    color:#c58aa5;
+
+    margin-left:10px;
+
+}
+
+.funcao-tag button{
+
+    border:0;
+
+    background:none;
+
+    color:#ef7b9e;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+}
+
+/* =========================
+
+   VISÃO DA COZINHA
+
+\========================= */
+
+.cozinha{
+
+    padding:20px;
+
+}
+
+.periodo{
+
+    margin-bottom:22px;
+
+}
+
+.periodo:last-child{
+
+    margin-bottom:0;
+
+}
+
+.periodo-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:10px;
+
+}
+
+.periodo-header h4{
+
+    font-size:15px;
+
+}
+
+.periodo-header .linha{
+
+    height:1px;
+
+    background:var(--borda);
+
+    flex:1;
+
+}
+
+.funcionarios{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:9px;
+
+}
+
+.funcionario{
+
+    background:#0b1c28;
+
+    border:1px solid #203746;
+
+    border-radius:9px;
+
+    padding:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+}
+
+.func-avatar{
+
+    width:38px;
+
+    height:38px;
+
+    min-width:38px;
+
+    border-radius:50%;
+
+    background:var(--dourado);
+
+    color:#301c25;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:bold;
+
+}
+
+.func-info{
+
+    flex:1;
+
+}
+
+.func-info strong{
+
+    display:block;
+
+    font-size:13px;
+
+}
+
+.func-info span{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-top:3px;
+
+}
+
+.funcao{
+
+    background:#281c28;
+
+    border:1px solid #513248;
+
+    color:#e3b6c8;
+
+    padding:5px 8px;
+
+    border-radius:15px;
+
+    font-size:10px;
+
+}
+
+/* =========================
+
+   STATUS
+
+\========================= */
+
+.status-pendente{
+
+    color:var(--vermelho);
+
+}
+
+.status-ok{
+
+    color:var(--verde);
+
+}
+
+.status-andamento{
+
+    color:var(--amarelo);
+
+}
+
+/* =========================
+
+   TABELA
+
+\========================= */
+
+.tabela{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.tabela th{
+
+    background:#101f2b;
+
+    color:#9eabb5;
+
+    text-align:left;
+
+    padding:12px;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+}
+
+.tabela td{
+
+    padding:13px 12px;
+
+    border-bottom:1px solid var(--borda);
+
+    font-size:12px;
+
+}
+
+.tag-funcao{
+
+    display:inline-flex;
+
+    margin:2px;
+
+    padding:5px 8px;
+
+    border-radius:6px;
+
+    background:#241b26;
+
+    border:1px solid #4b3040;
+
+    color:#d9b5c4;
+
+}
+
+.badge{
+
+    padding:5px 9px;
+
+    border-radius:15px;
+
+    font-size:10px;
+
+}
+
+.badge.verde{
+
+    background:var(--verde-bg);
+
+    color:var(--verde);
+
+}
+
+.badge.amarelo{
+
+    background:var(--amarelo-bg);
+
+    color:var(--amarelo);
+
+}
+
+.badge.vermelho{
+
+    background:var(--vermelho-bg);
+
+    color:var(--vermelho);
+
+}
+
+/* =========================
+
+   COPIAR
+
+\========================= */
+
+.acoes{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    justify-content:flex-end;
+
+    padding:0 20px 20px;
+
+}
+
+.btn-copiar{
+
+    border:1px solid var(--vinho2);
+
+    background:rgba(143,49,93,.12);
+
+    color:#efb3ca;
+
+    padding:10px 16px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+/* =========================
+
+   RESPONSIVO
+
+\========================= */
+
+@media(max-width:1000px){
+
+    .sidebar{
+
+        width:75px;
+
+    }
+
+    .logo div,
+
+    .menu button span,
+
+    .sair span{
+
+        display:none;
+
+    }
+
+    .formulario{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .funcionarios{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    .main{
+
+        padding:15px;
+
+    }
+
+    .topo{
+
+        align-items:flex-start;
+
+    }
+
+    .usuario .online{
+
+        display:none;
+
+    }
+
+    .banner{
+
+        min-height:190px;
+
+    }
+
+    .section-title{
+
+        align-items:flex-start;
+
+        gap:10px;
+
+        flex-direction:column;
+
+    }
+
+    .tabela{
+
+        min-width:750px;
+
+    }
+
+    .card-body{
+
+        overflow-x:auto;
+
+    }
+
+}
+
+/* =========================
+
+   TEMA CLARO / ESCURO
+
+\========================= */
+
+body.tema-claro{
+
+    --bg:#f3f5f7;
+
+    --bg2:#ffffff;
+
+    --card:#ffffff;
+
+    --card2:#f8fafb;
+
+    --texto:#18222b;
+
+    --muted:#687681;
+
+    --borda:#d9e0e5;
+
+}
+
+body.tema-claro .sidebar{background:#ffffff;}
+
+body.tema-claro input,
+
+body.tema-claro select{background:#ffffff;color:#18222b;border-color:#cbd5dc;}
+
+body.tema-claro .card,
+
+body.tema-claro .funcionario,
+
+body.tema-claro .lista-funcionarios{background:#ffffff;}
+
+body.tema-claro .funcionario-opcao{color:#18222b;}
+
+body.tema-claro .funcionario-opcao:hover{background:#f1f4f6;}
+
+body.tema-claro .tabela th{background:#f0f3f5;}
+
+body.tema-claro .menu button{color:#65737d;}
+
+body.tema-claro .menu button:hover,
+
+body.tema-claro .menu button.ativo{color:#351b29;background:rgba(143,49,93,.13);}
+
+.theme-control{margin-top:18px;padding:12px;border:1px solid var(--borda);border-radius:10px;}
+
+.theme-control-title{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+
+.theme-buttons{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+
+.theme-buttons button{border:1px solid var(--borda);background:transparent;color:var(--muted);border-radius:7px;padding:8px 5px;cursor:pointer;font-size:11px;}
+
+.theme-buttons button.ativo{background:var(--vinho);border-color:var(--vinho);color:#fff;}
+
+.banner{position:relative;overflow:hidden;}
+
+.banner-imagem{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(90deg,rgba(45,8,27,.94) 0%,rgba(55,17,39,.78) 43%,rgba(55,17,39,.20) 100%),
+
+        url('Imagens/foto-escola 4.png')
+
+        center/cover;
+
+    opacity:.95;
+
+}
+
+.banner-conteudo{position:relative;z-index:1;}
+
+.formulario{
+
+    align-items:start;
+
+}
+
+.formulario > .campo:first-child{
+
+    align-self:start;
+
+}
+
+.formulario > .campo:nth-child(2){
+
+    align-self:start;
+
+}
+
+.formulario > div:last-child{
+
+    padding-top:20px;
+
+}
+
+.btn-adicionar{
+
+    margin-top:0;
+
+    height:43px;
+
+    align-self:start;
+
+}
+
+.btn-salvar{
+
+    margin-top:0;
+
+    height:43px;
+
+    align-self:start;
+
+}
+
+/* Funções da mesma pessoa agrupadas no mesmo card da cozinha */
+
+.cozinha-funcoes {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-top: 7px;
+
+}
+
+.cozinha-funcoes .funcao {
+
+    display: inline-block;
+
+    white-space: normal;
+
+}
+
+/* ==== GESTÃOPRO: ESCALA SEMANAL (adição) ==== */
+
+.semana-painel{background:linear-gradient(110deg,#210d20,#171627);border:1px solid #6c2852;border-radius:13px;padding:20px;margin:20px 0 24px;color:#f5f7ff}
+
+.semana-cabecalho,.semana-navegacao,.semana-edicao,.semana-edicao-acoes{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+.semana-cabecalho h2{font-size:21px;margin:0 0 5px}.semana-cabecalho p{margin:0;color:#aabed1;font-size:12px}
+
+.semana-navegacao button,.semana-edicao button{background:#0c2232;border:1px solid #345069;color:#f4f7ff;border-radius:8px;padding:10px 13px;cursor:pointer}
+
+.semana-navegacao button:hover,.semana-edicao button:hover{border-color:#e34b94}
+
+.semana-navegacao strong{font-size:13px;white-space:nowrap}
+
+.semana-dias{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:18px}
+
+.semana-dia{min-width:0;padding:15px;border:1px solid #344657;border-radius:11px;background:#0b2030;color:#f4f7ff;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:12px;transition:border-color .15s,transform .15s}
+
+.semana-dia:hover{transform:translateY(-2px);border-color:#d94a90}.semana-dia.selecionado{outline:2px solid #e54a94;outline-offset:1px}
+
+.semana-dia[data-status="PUBLICADO"]{background:linear-gradient(135deg,#06352d,#082a2a);border-color:#0d795b}
+
+.semana-dia[data-status="PLANEJADO"]{background:linear-gradient(135deg,#0b2945,#0c2136);border-color:#1b6296}
+
+.semana-dia[data-status="PENDENTE"]{background:linear-gradient(135deg,#342c20,#29251f);border-color:#715723}
+
+.semana-dia[data-status="SEM_EXPEDIENTE"]{background:linear-gradient(135deg,#1e293b,#192333);border-color:#39495d}
+
+.semana-dia-topo{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap}
+
+.semana-dia-nome{font-size:12px;color:#bed1df;font-weight:700}.semana-dia-data{font-size:23px;font-weight:800}
+
+.semana-badge{font-size:11px;border-radius:15px;padding:5px 8px;background:#263b4c;color:#d5e6f3}
+
+.semana-dia[data-status="PUBLICADO"] .semana-badge{background:#064d39;color:#38e9a1}
+
+.semana-dia[data-status="PLANEJADO"] .semana-badge{background:#0c4368;color:#6ecbff}
+
+.semana-dia[data-status="PENDENTE"] .semana-badge{background:#564315;color:#ffd15a}
+
+.semana-dia-info{font-size:12px;color:#c2d1df;min-height:30px}
+
+.semana-dia-acao{display:block;text-align:center;padding:10px 7px;border:1px solid #506075;border-radius:7px;font-size:12px;font-weight:700}
+
+.semana-dia.selecionado .semana-dia-acao{background:#b53677;border-color:#b53677;color:#fff}
+
+.semana-edicao{border-top:1px solid #50304a;margin-top:16px;padding-top:14px;font-size:12px}
+
+.semana-edicao select{background:#0c2232;color:white;border:1px solid #345069;padding:9px;border-radius:7px}
+
+.semana-edicao #semExpedienteDia{background:#334155;border-color:#64748b;color:#fff;font-weight:700}
+
+.semana-edicao #finalizarEscalaDia{background:#087d55;border:1px solid #16a875;color:#fff;font-weight:700}
+
+.semana-edicao #finalizarEscalaDia:hover{background:#099667}
+
+.semana-edicao #finalizarEscalaDia:disabled{opacity:.5;cursor:not-allowed}
+
+.tema-claro .semana-painel{background:#fff7fc;color:#15283b}.tema-claro .semana-cabecalho p{color:#496073}
+
+.tema-claro .semana-dia{color:#f4f7ff}
+
+@media(max-width:1200px){.semana-dias{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+@media(max-width:760px){.semana-dias{grid-template-columns:repeat(2,minmax(0,1fr))}.semana-painel{padding:14px}.semana-cabecalho{align-items:flex-start}.semana-navegacao{justify-content:flex-start}}
+
+@media(max-width:430px){.semana-dias{grid-template-columns:1fr}.semana-navegacao strong{width:100%;order:-1}.semana-edicao-acoes{align-items:stretch}}
+
+</style>
+
+<script>
+/* DEMONSTRAÇÃO LOCAL: substitui apenas as chamadas /api, sem servidor. */
+(function(){
+const key='gestaofuncoes_demo_v1';
+let db;try{db=JSON.parse(localStorage.getItem(key))||{funcionarios:[],funcoes:[],escalas:[]}}catch(e){db={funcionarios:[],funcoes:[],escalas:[]}}
+const save=()=>localStorage.setItem(key,JSON.stringify(db));
+const realFetch=window.fetch.bind(window);
+window.fetch=async function(input,options={}){
+ const raw=typeof input==='string'?input:input.url;
+ if(!raw.startsWith('/api/'))return realFetch(input,options);
+ const u=new URL(raw,location.origin),path=u.pathname,method=(options.method||'GET').toUpperCase();
+ let data=null,status=200;
+ try{
+ const body=options.body?JSON.parse(options.body):{};
+ if(path==='/api/funcionarios'){
+   if(method==='GET')data=db.funcionarios;
+   else if(method==='POST'){data={...body,id:Date.now(),ativo:true};db.funcionarios.push(data);save()}
+ }else if(path==='/api/funcoes'){
+   if(method==='GET')data=db.funcoes.filter(f=>!u.searchParams.get('data')||f.dataFuncao===u.searchParams.get('data'));
+   else if(method==='POST'){data={...body,id:Date.now()+Math.floor(Math.random()*1000)};const f=db.funcionarios.find(x=>String(x.id)===String(body.funcionarioId));if(f)data.funcionario=f;db.funcoes.push(data);save()}
+ }else if(path.startsWith('/api/funcoes/')){
+   const id=path.split('/').pop(),idx=db.funcoes.findIndex(x=>String(x.id)===id);
+   if(idx<0){status=404;data={erro:'Função não encontrada'}}
+   else if(method==='DELETE'){db.funcoes.splice(idx,1);save();data={}}
+   else if(method==='PUT'){db.funcoes[idx]={...db.funcoes[idx],...body};save();data=db.funcoes[idx]}
+ }else if(path==='/api/escalas'){
+   if(method==='GET'){const a=u.searchParams.get('inicio'),b=u.searchParams.get('fim');data=db.escalas.filter(x=>(!a||x.dataEscala>=a)&&(!b||x.dataEscala<=b))}
+   else if(method==='POST'){const i=db.escalas.findIndex(x=>x.dataEscala===body.dataEscala);if(i<0)db.escalas.push(body);else db.escalas[i]={...db.escalas[i],...body};save();data=body}
+ }
+ if(data===null){status=404;data={erro:'Rota não disponível na demonstração'}};
+ return new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json'}})
+ }catch(err){return new Response(JSON.stringify({erro:String(err)}),{status:500,headers:{'Content-Type':'application/json'}})}
+ };
+})();
+</script>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- =========================
+
+     MENU
+
+\========================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">👨‍🍳</div>
+
+        <div>
+
+            <strong>GestãoPro</strong>
+
+            <span>Cozinha Escolar</span>
+
+        </div>
+
+    </div>
+
+    <nav class="menu">
+
+        <button class="ativo">
+
+            🏠 <span>Dashboard</span>
+
+        </button>
+
+        <button>
+
+            📅 <span>Cardápio</span>
+
+        </button>
+
+        <button>
+
+            👥 <span>Funcionários</span>
+
+        </button>
+
+        <button>
+
+            🍳 <span>Funções</span>
+
+        </button>
+
+        <button>
+
+            🗺️ <span>Visão da Cozinha</span>
+
+        </button>
+
+    </nav>
+
+    <div class="theme-control">
+
+        <div class="theme-control-title">Tema</div>
+
+        <div class="theme-buttons">
+
+            <button id="temaEscuro" class="ativo" onclick="mudarTema('escuro')">🌙 Escuro</button>
+
+            <button id="temaClaro" onclick="mudarTema('claro')">☀️ Claro</button>
+
+        </div>
+
+    </div>
+
+    <div class="sair">
+
+        🚪 <span>Sair</span>
+
+    </div>
+
+</aside>
+
+<!-- =========================
+
+     PRINCIPAL
+
+\========================= -->
+
+<main class="main">
+
+    <header class="topo">
+
+        <div>
+
+            <h1>
+
+                Dashboard Operacional –
+
+                <span>Gestão de Funções</span>
+
+            </h1>
+
+            <p class="subtitulo">
+
+                Organização semanal da equipe da cozinha escolar
+
+            </p>
+
+        </div>
+
+        <div class="usuario">
+
+            <span class="online">
+
+                ● Online
+
+            </span>
+
+            <span>Semana atual</span>
+
+            <div class="avatar">
+
+                M
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- =========================
+
+         BANNER
+
+    \========================= -->
+
+    <!-- ESCALA SEMANAL: painel novo, sem alterar os demais componentes -->
+
+    <section class="semana-painel" aria-label="Escala da semana">
+
+      <div class="semana-cabecalho">
+
+        <div><h2>📅 Escala da Semana</h2><p>Visualize e organize as funções de cada dia</p></div>
+
+        <div class="semana-navegacao">
+
+          <button type="button" id="semanaAnterior">← Semana anterior</button>
+
+          <strong id="semanaIntervalo">Carregando...</strong>
+
+          <button type="button" id="semanaProxima">Próxima semana →</button>
+
+          <button type="button" id="semanaHoje">Hoje</button>
+
+        </div>
+
+      </div>
+
+      <div class="semana-dias" id="semanaDias" aria-live="polite"></div>
+
+      <div class="semana-edicao">
+
+        <span id="semanaSelecionada">Dia selecionado: hoje</span>
+
+        <div class="semana-edicao-acoes">
+
+          <button type="button" id="semExpedienteDia" class="btn-sem-expediente">⚪ Marcar sem expediente</button>
+          <button type="button" id="finalizarEscalaDia" title="Finaliza as funções do dia selecionado">✓ Finalizar escala do dia</button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+
+         CADASTRO
+
+    \========================= -->
+
+    <div class="section-title">
+
+        <div>
+
+            <h2>
+
+                Cadastro de Funções
+
+            </h2>
+
+            <p>
+
+                Monte a escala do dia selecionado e altere quando necessário.
+
+            </p>
+
+        </div>
+
+        <button class="btn">
+
+            ◷ Histórico
+
+        </button>
+
+    </div>
+
+    <section class="card">
+
+        <div class="card-header">
+
+            <h3>
+
+                Nova atribuição
+
+            </h3>
+
+            <span>
+
+                Selecione a funcionária e defina sua função
+
+            </span>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="formulario">
+
+                <!-- FUNCIONÁRIO -->
+
+                <div class="campo">
+
+                    <label>
+
+                        Funcionário
+
+                    </label>
+
+                    <input
+
+                        id="buscaFuncionario"
+
+                        placeholder="Digite o nome..."
+
+                        autocomplete="off"
+
+                        onfocus="abrirFuncionarios()"
+
+                        onkeyup="filtrarFuncionarios()"
+
+                    >
+
+                    <div
+
+                        id="listaFuncionarios"
+
+                        class="lista-funcionarios"
+
+                    >
+
+                        <button
+
+                            class="funcionario-opcao"
+
+                            data-nome="Mateus"
+
+                            onclick="selecionarFuncionario('Mateus')"
+
+                        >
+
+                            <span class="status-dot"></span>
+
+                            Mateus
+
+                        </button>
+
+                        <button
+
+                            class="funcionario-opcao"
+
+                            data-nome="Vitor"
+
+                            onclick="selecionarFuncionario('Vitor')"
+
+                        >
+
+                            <span class="status-dot"></span>
+
+                            Vitor
+
+                        </button>
+
+                        <button
+
+                            class="funcionario-opcao"
+
+                            data-nome="Francisco"
+
+                            onclick="selecionarFuncionario('Francisco')"
+
+                        >
+
+                            <span class="status-dot"></span>
+
+                            Francisco
+
+                        </button>
+
+                        <button
+
+                            class="funcionario-opcao"
+
+                            data-nome="Camila"
+
+                            onclick="selecionarFuncionario('Camila')"
+
+                        >
+
+                            <span class="status-dot"></span>
+
+                            Camila
+
+                        </button>
+
+                        <button
+
+                            class="funcionario-opcao"
+
+                            data-nome="Mariana"
+
+                            onclick="selecionarFuncionario('Mariana')"
+
+                        >
+
+                            <span class="status-dot"></span>
+
+                            Mariana
+
+                        </button>
+
+                        <button
+
+                            class="funcionario-opcao"
+
+                            data-nome="Fernanda"
+
+                            onclick="selecionarFuncionario('Fernanda')"
+
+                        >
+
+                            <span class="status-dot"></span>
+
+                            Fernanda
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- FUNÇÃO -->
+
+                <div class="campo">
+
+                    <label>
+
+                        Função e período
+
+                    </label>
+
+                    <div
+
+                        style="
+
+                        display:grid;
+
+                        grid-template-columns:1fr 180px 110px;
+
+                        gap:8px;
+
+                        "
+
+                    >
+
+                        <select id="funcao">
+
+                            <option value="">
+
+                                Selecione a função
+
+                            </option>
+
+                            <option value="Carne">Carne</option>
+
+                            <option value="Arroz">Arroz</option>
+
+                            <option value="Salada">Salada</option>
+
+                            <option value="Louça">Louça</option>
+
+                            <option value="Organização da cozinha">Organização da cozinha</option>
+
+                            <option value="Organização do refeitório">Organização do refeitório</option>
+
+                            <option value="Reposição">Reposição</option>
+
+                            <option value="Apoio na preparação">Apoio na preparação</option>
+
+                        </select>
+
+                        <select id="periodo">
+
+                            <option value="">
+
+                                Selecione o período
+
+                            </option>
+
+                            <option>
+
+                                Antes do café
+
+                            </option>
+
+                            <option>
+
+                                Café
+
+                            </option>
+
+                            <option>
+
+                                Almoço
+
+                            </option>
+
+                            <option>
+
+                                Janta
+
+                            </option>
+
+                        </select>
+
+                        <button
+
+                            class="btn-adicionar"
+
+                            onclick="adicionarFuncao()"
+
+                        >
+
+                            \+ Adicionar
+
+                        </button>
+
+                    </div>
+
+                    <div
+
+                        id="funcoesSelecionadas"
+
+                        class="funcoes-selecionadas"
+
+                    >
+
+                        <span style="
+
+                            color:var(--muted);
+
+                            font-size:12px;
+
+                        ">
+
+                            Nenhuma função adicionada
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- SALVAR -->
+
+                <div>
+
+                    <button
+
+                        class="btn-salvar"
+
+                        onclick="salvarFuncionario()"
+
+                    >
+
+                        ✓ Salvar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+
+         FUNCIONÁRIOS
+
+    \========================= -->
+
+    <section class="card">
+
+        <div class="card-header">
+
+            <h3>
+
+                Funcionários e funções
+
+            </h3>
+
+            <span>
+
+                Situação da escala
+
+            </span>
+
+        </div>
+
+        <div style="overflow-x:auto;">
+
+            <table class="tabela">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Funcionário</th>
+
+                        <th>Funções</th>
+
+                        <th>Períodos</th>
+
+                        <th>Status</th>
+
+                        <th>Ações</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="tabelaFuncoes">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+
+         VISÃO DA COZINHA
+
+    \========================= -->
+
+    <section class="card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3>
+
+                    Visão da Cozinha
+
+                </h3>
+
+                <span>
+
+                    Visualização rápida da escala
+
+                </span>
+
+            </div>
+
+            <span>
+
+                <span id="dataVisaoCozinha">Escala de hoje</span>
+
+            </span>
+
+        </div>
+
+        <div class="cozinha" id="visaoCozinha">
+
+            <div class="periodo">
+
+                <div class="periodo-header">
+
+                    <h4>Antes do café</h4>
+
+                    <div class="linha"></div>
+
+                </div>
+
+                <div class="funcionarios" id="cozinha-periodo-0">
+
+                    <p class="cozinha-vazia">Carregando escala...</p>
+
+                </div>
+
+            </div>
+
+            <div class="periodo">
+
+                <div class="periodo-header">
+
+                    <h4>Café</h4>
+
+                    <div class="linha"></div>
+
+                </div>
+
+                <div class="funcionarios" id="cozinha-periodo-1">
+
+                    <p class="cozinha-vazia">Carregando escala...</p>
+
+                </div>
+
+            </div>
+
+            <div class="periodo">
+
+                <div class="periodo-header">
+
+                    <h4>Almoço</h4>
+
+                    <div class="linha"></div>
+
+                </div>
+
+                <div class="funcionarios" id="cozinha-periodo-2">
+
+                    <p class="cozinha-vazia">Carregando escala...</p>
+
+                </div>
+
+            </div>
+
+            <div class="periodo">
+
+                <div class="periodo-header">
+
+                    <h4>Janta</h4>
+
+                    <div class="linha"></div>
+
+                </div>
+
+                <div class="funcionarios" id="cozinha-periodo-3">
+
+                    <p class="cozinha-vazia">Carregando escala...</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="acoes">
+
+            <button type="button" class="btn-copiar" id="btnGerarImagem" onclick="gerarImagemEscala()">📸 Gerar imagem da escala</button>
+
+            <button type="button" class="btn-copiar" id="btnCompartilharImagem" onclick="compartilharImagemEscala()">📤 Compartilhar imagem</button>
+
+            <button
+
+                class="btn-copiar"
+
+                onclick="copiarEscala()"
+
+            >
+
+                👥 Copiar escala para o grupo
+
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+</div>
+
+<script>
+
+let funcionarioSelecionado = "";
+
+let funcoesSelecionadas = [];
+
+const statusFuncionarios = {
+
+    Mateus: "preenchido",
+
+    Vitor: "preenchido",
+
+    Francisco: "preenchido",
+
+    Camila: "andamento",
+
+    Mariana: "pendente",
+
+    Fernanda: "pendente"
+
+};
+
+let funcionarios = [];
+
+let funcionarioPorNome = {};
+
+/* =========================
+
+   FUNCIONÁRIOS - BANCO
+
+\========================= */
+
+async function carregarFuncionarios() {
+
+    try {
+
+        const resposta = await fetch("/api/funcionarios");
+
+        if (!resposta.ok) {
+
+            throw new Error("Erro ao carregar funcionários");
+
+        }
+
+        funcionarios = await resposta.json();
+
+        funcionarioPorNome = {};
+
+        funcionarios.forEach(funcionario => {
+
+            funcionarioPorNome[funcionario.nome] = funcionario;
+
+        });
+
+        renderizarListaFuncionarios();
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        alert("Não foi possível carregar os funcionários.");
+
+    }
+
+}
+
+function renderizarListaFuncionarios() {
+
+    const lista =
+
+        document.getElementById("listaFuncionarios");
+
+    lista.innerHTML = "";
+
+    funcionarios.forEach(funcionario => {
+
+        const botao = document.createElement("button");
+
+        botao.className = "funcionario-opcao";
+
+        botao.dataset.nome = funcionario.nome;
+
+        botao.innerHTML = `
+
+            <span class="status-dot"></span>
+
+            ${funcionario.nome}
+
+        `;
+
+        botao.onclick = function () {
+
+            selecionarFuncionario(funcionario.nome);
+
+        };
+
+        lista.appendChild(botao);
+
+    });
+
+    atualizarStatusVisual();
+
+}
+
+/* =========================
+
+   FUNCIONÁRIOS
+
+\========================= */
+
+function abrirFuncionarios() {
+
+    document
+
+        .getElementById("listaFuncionarios")
+
+        .classList.add("aberta");
+
+}
+
+function filtrarFuncionarios() {
+
+    const busca =
+
+        document
+
+            .getElementById("buscaFuncionario")
+
+            .value
+
+            .toLowerCase();
+
+    const opcoes =
+
+        document.querySelectorAll(
+
+            ".funcionario-opcao"
+
+        );
+
+    document
+
+        .getElementById("listaFuncionarios")
+
+        .classList.add("aberta");
+
+    opcoes.forEach(opcao => {
+
+        const nome =
+
+            opcao.dataset.nome.toLowerCase();
+
+        opcao.style.display =
+
+            nome.includes(busca)
+
+                ? "block"
+
+                : "none";
+
+    });
+
+}
+
+function selecionarFuncionario(nome) {
+
+    funcionarioSelecionado = nome;
+
+    document
+
+        .getElementById("buscaFuncionario")
+
+        .value = nome;
+
+    document
+
+        .getElementById("listaFuncionarios")
+
+        .classList.remove("aberta");
+
+    atualizarStatusVisual();
+
+}
+
+/* =========================
+
+   STATUS
+
+\========================= */
+
+function atualizarStatusVisual() {
+
+    // Verde: possui pelo menos uma função salva na escala do dia.
+
+    // Vermelho: não possui nenhuma função salva na escala do dia.
+
+    const idsComFuncao = new Set(
+
+        funcoesEscalaAtual
+
+            .map(item => String(item.funcionario?.id ?? item.funcionarioId ?? ""))
+
+            .filter(Boolean)
+
+    );
+
+    const nomesComFuncao = new Set(
+
+        funcoesEscalaAtual
+
+            .map(item => String(item.funcionario?.nome ?? "").trim().toLocaleLowerCase("pt-BR"))
+
+            .filter(Boolean)
+
+    );
+
+    document.querySelectorAll(".funcionario-opcao").forEach(opcao => {
+
+        const nome = opcao.dataset.nome;
+
+        const funcionario = funcionarioPorNome[nome];
+
+        const preenchido = (funcionario && idsComFuncao.has(String(funcionario.id))) ||
+
+            nomesComFuncao.has(nome.trim().toLocaleLowerCase("pt-BR"));
+
+        opcao.classList.toggle("preenchido", Boolean(preenchido));
+
+        opcao.classList.remove("andamento");
+
+        opcao.title = preenchido
+
+            ? "Possui função cadastrada na escala de hoje"
+
+            : "Sem função cadastrada na escala de hoje";
+
+    });
+
+}
+
+/* =========================
+
+   ADICIONAR FUNÇÃO
+
+\========================= */
+
+function adicionarFuncao() {
+
+    if (!funcionarioSelecionado) {
+
+        alert(
+
+            "Selecione um funcionário primeiro."
+
+        );
+
+        return;
+
+    }
+
+    const funcao = nomeFuncaoLimpo(
+
+        document.getElementById("funcao").value
+
+    );
+
+    const periodo =
+
+        document
+
+            .getElementById("periodo")
+
+            .value;
+
+    if (!funcao || !periodo) {
+
+        alert(
+
+            "Selecione a função e o período."
+
+        );
+
+        return;
+
+    }
+
+    const existe =
+
+        funcoesSelecionadas.some(
+
+            item =>
+
+                item.funcao === funcao &&
+
+                item.periodo === periodo
+
+        );
+
+    if (existe) {
+
+        alert(
+
+            "Essa função já foi adicionada."
+
+        );
+
+        return;
+
+    }
+
+    funcoesSelecionadas.push({
+
+        funcao: funcao,
+
+        periodo: periodo
+
+    });
+
+    document
+
+        .getElementById("funcao")
+
+        .value = "";
+
+    document
+
+        .getElementById("periodo")
+
+        .value = "";
+
+    renderizarFuncoes();
+
+}
+
+/* =========================
+
+   RENDERIZAR FUNÇÕES
+
+\========================= */
+
+function renderizarFuncoes() {
+
+    const container =
+
+        document.getElementById(
+
+            "funcoesSelecionadas"
+
+        );
+
+    if (funcoesSelecionadas.length === 0) {
+
+        container.innerHTML = `
+
+            <span style="
+
+                color:var(--muted);
+
+                font-size:12px;
+
+            ">
+
+                Nenhuma função adicionada
+
+            </span>
+
+        `;
+
+        return;
+
+    }
+
+    container.innerHTML =
+
+        funcoesSelecionadas
+
+            .map((item, index) => `
+
+                <div class="funcao-tag">
+
+                    <div>
+
+                        <strong>
+
+                            ${item.funcao}
+
+                        </strong>
+
+                        <span>
+
+                            ${item.periodo}
+
+                        </span>
+
+                    </div>
+
+                    <button
+
+                        onclick="removerFuncao(${index})"
+
+                    >
+
+                        ×
+
+                    </button>
+
+                </div>
+
+            `)
+
+            .join("");
+
+}
+
+/* =========================
+
+OBTER DATA ATUAL
+
+\========================= */
+
+function obterDataAtual() {
+
+ const partes = new Intl.DateTimeFormat("en-US", {
+
+     timeZone: "America/Sao_Paulo",
+
+     year: "numeric",
+
+     month: "2-digit",
+
+     day: "2-digit"
+
+ }).formatToParts(new Date());
+
+ const valor = tipo =>
+
+     partes.find(parte => parte.type === tipo).value;
+
+ return `${valor("year")}-${valor("month")}-${valor("day")}`;
+
+}
+
+/* =========================
+
+   REMOVER
+
+\========================= */
+
+function removerFuncao(index) {
+
+    funcoesSelecionadas.splice(index, 1);
+
+    renderizarFuncoes();
+
+}
+
+/* =========================
+
+   SALVAR NO BANCO
+
+\========================= */
+
+async function salvarFuncionario() {
+
+    if (!funcionarioSelecionado) {
+
+        alert(
+
+            "Selecione um funcionário."
+
+        );
+
+        return;
+
+    }
+
+    if (funcoesSelecionadas.length === 0) {
+
+        statusFuncionarios[
+
+            funcionarioSelecionado
+
+        ] = "andamento";
+
+        atualizarStatusVisual();
+
+        alert(
+
+            "Adicione pelo menos uma função."
+
+        );
+
+        return;
+
+    }
+
+    const funcionario =
+
+        funcionarioPorNome[
+
+            funcionarioSelecionado
+
+        ];
+
+    if (!funcionario) {
+
+        alert(
+
+            "Funcionário não encontrado no banco."
+
+        );
+
+        return;
+
+    }
+
+    const dataFuncao = obterDataEscala();
+
+    try {
+
+        for (
+
+            const item of funcoesSelecionadas
+
+        ) {
+
+            const resposta =
+
+                await fetch(
+
+                    "/api/funcoes",
+
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+
+                                "application/json"
+
+                        },
+
+                        body: JSON.stringify({
+
+                            funcionarioId:
+
+                                funcionario.id,
+
+                            dataFuncao:
+
+                                dataFuncao,
+
+                            funcao:
+
+                                item.funcao,
+
+                            periodo:
+
+                                item.periodo,
+
+                            observacao:
+
+                                "",
+
+                            responsavel:
+
+                                "Sistema"
+
+                        })
+
+                    }
+
+                );
+
+            if (!resposta.ok) {
+
+                const erro =
+
+                    await resposta.text();
+
+                throw new Error(
+
+                    erro ||
+
+                    `Erro HTTP ${resposta.status}`
+
+                );
+
+            }
+
+        }
+
+        statusFuncionarios[
+
+            funcionarioSelecionado
+
+        ] = "preenchido";
+
+        atualizarStatusVisual();
+
+        alert(
+
+        	    "Escala salva com sucesso! 🟢"
+
+        	);
+
+        	funcoesSelecionadas = [];
+
+        	renderizarFuncoes();
+
+        	// Atualiza a tabela depois de salvar
+
+        	await carregarTabelaFuncoes();
+
+    } catch (erro) {
+
+        console.error(
+
+            "Erro ao salvar:",
+
+            erro
+
+        );
+
+        alert(
+
+            "Erro ao salvar no banco de dados."
+
+        );
+
+    }
+
+}
+
+/* =========================
+
+   COPIAR ESCALA
+
+\========================= */
+
+// A mesma lista alimenta a tabela, a visão e a cópia para o grupo.
+
+let funcoesEscalaAtual = [];
+
+const periodosCozinha = ["Antes do café", "Café", "Almoço", "Janta"];
+
+function escaparHTML(valor) {
+
+    return String(valor ?? "").replace(/[&<>"']/g, caractere => ({
+
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+
+    })[caractere]);
+
+}
+
+// Remove contadores que possam ter sido gravados como parte do nome da função.
+
+function nomeFuncaoLimpo(valor) {
+
+    return String(valor ?? "").trim().replace(/\s+[—–-]\s+\d+\s+pessoas?\s*$/i, "").trim();
+
+}
+
+// Contadores somente no seletor: option.value permanece o nome real da função.
+
+function atualizarContagemFuncoes() {
+
+    const seletor = document.getElementById("funcao");
+
+    if (!seletor) return;
+
+    const contagens = new Map();
+
+    funcoesEscalaAtual.forEach(item => {
+
+        const funcao = nomeFuncaoLimpo(item.funcao).toLocaleLowerCase("pt-BR");
+
+        const id = item.funcionario?.id ?? item.funcionarioId;
+
+        const nome = String(item.funcionario?.nome ?? "").trim().toLocaleLowerCase("pt-BR");
+
+        const pessoa = id != null ? `id:${id}` : nome ? `nome:${nome}` : null;
+
+        if (!funcao || !pessoa) return;
+
+        if (!contagens.has(funcao)) contagens.set(funcao, new Set());
+
+        contagens.get(funcao).add(pessoa);
+
+    });
+
+    Array.from(seletor.options).forEach(opcao => {
+
+        if (!opcao.value) return;
+
+        const original = nomeFuncaoLimpo(opcao.dataset.nomeOriginal || opcao.value);
+
+        opcao.dataset.nomeOriginal = original;
+
+        opcao.value = original; // Fundamental: não deixar o texto visível virar o valor salvo.
+
+        const quantidade = contagens.get(original.toLocaleLowerCase("pt-BR"))?.size ?? 0;
+
+        opcao.textContent = `${original} — ${quantidade} ${quantidade === 1 ? "pessoa" : "pessoas"}`;
+
+    });
+
+}
+
+function renderizarVisaoCozinha(funcoes) {
+
+    const data = obterDataEscala();
+
+    const indicador = document.getElementById("dataVisaoCozinha");
+
+    if (indicador) {
+
+        const [ano, mes, dia] = data.split("-");
+
+        indicador.textContent = `Escala de ${dia}/${mes}/${ano}`;
+
+    }
+
+    periodosCozinha.forEach((periodo, indice) => {
+
+        const destino = document.getElementById(`cozinha-periodo-${indice}`);
+
+        if (!destino) return;
+
+        const atribuidas = funcoes.filter(item =>
+
+            String(item.periodo ?? "").trim().toLocaleLowerCase("pt-BR") ===
+
+            periodo.toLocaleLowerCase("pt-BR")
+
+        );
+
+        if (!atribuidas.length) {
+
+            destino.innerHTML = '<p class="cozinha-vazia">Nenhuma função cadastrada neste período.</p>';
+
+            return;
+
+        }
+
+        // Um card por funcionário em cada período, mesmo com várias funções.
+
+        const agrupados = new Map();
+
+        atribuidas.forEach(item => {
+
+            const nome = String(item.funcionario?.nome ?? "Funcionário não identificado").trim();
+
+            const id = item.funcionario?.id ?? item.funcionarioId;
+
+            const chave = id != null && id !== ""
+
+                ? `id:${id}`
+
+                : `nome:${nome.toLocaleLowerCase("pt-BR")}`;
+
+            if (!agrupados.has(chave)) agrupados.set(chave, { nome, funcoes: [] });
+
+            const funcao = String(item.funcao ?? "Função não informada").trim();
+
+            if (!agrupados.get(chave).funcoes.includes(funcao)) {
+
+                agrupados.get(chave).funcoes.push(funcao);
+
+            }
+
+        });
+
+        destino.innerHTML = Array.from(agrupados.values()).map(({ nome, funcoes }) => {
+
+            const inicial = nome.charAt(0).toLocaleUpperCase("pt-BR") || "?";
+
+            const etiquetas = funcoes.map(funcao =>
+
+                `<span class="funcao">${escaparHTML(funcao)}</span>`
+
+            ).join("");
+
+            return `<div class="funcionario">
+
+                <div class="func-avatar">${escaparHTML(inicial)}</div>
+
+                <div class="func-info"><strong>${escaparHTML(nome)}</strong>
+
+                    <div class="cozinha-funcoes">${etiquetas}</div></div>
+
+            </div>`;
+
+        }).join("");
+
+    });
+
+}
+
+async function carregarVisaoCozinha() {
+
+    // Usa a mesma consulta e os mesmos dados da tabela de funções.
+
+    await carregarTabelaFuncoes();
+
+}
+
+/* ============================================================
+
+   IMAGEM DA ESCALA — usa os mesmos dados da Visão da Cozinha.
+
+   PNG vertical, altura variável e nomes agrupados por período.
+
+   \============================================================ */
+
+function gruposDaEscala(periodo) {
+
+    const grupos = new Map();
+
+    funcoesEscalaAtual.forEach(item => {
+
+        if (String(item.periodo ?? "").trim().toLocaleLowerCase("pt-BR") !==
+
+            periodo.toLocaleLowerCase("pt-BR")) return;
+
+        const nome = String(item.funcionario?.nome ?? "Funcionário não identificado").trim();
+
+        const id = item.funcionario?.id ?? item.funcionarioId;
+
+        const chave = id != null ? `id:${id}` : `nome:${nome.toLocaleLowerCase("pt-BR")}`;
+
+        if (!grupos.has(chave)) grupos.set(chave, { nome, funcoes: [] });
+
+        const funcao = nomeFuncaoLimpo(item.funcao) || "Função não informada";
+
+        if (!grupos.get(chave).funcoes.includes(funcao)) grupos.get(chave).funcoes.push(funcao);
+
+    });
+
+    return [...grupos.values()].sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
+
+}
+
+function desenharEscalaCanvas() {
+
+    if (!funcoesEscalaAtual.length) throw new Error("Não existem funções cadastradas na escala de hoje.");
+
+    const largura = 1080, margem = 36, espaco = 16, coluna = (largura - 2 * margem - espaco) / 2;
+
+    const canvas = document.createElement("canvas");
+
+    const ctx = canvas.getContext("2d");
+
+    if (!ctx) throw new Error("Este navegador não oferece suporte ao Canvas.");
+
+    const cores = [
+
+        {fundo:"#ffedce", faixa:"#f5bc63", texto:"#6b3d0b", icone:"☀"},
+
+        {fundo:"#ffe5e9", faixa:"#f5a6b3", texto:"#75283d", icone:"☕"},
+
+        {fundo:"#e1f5dd", faixa:"#9fdda0", texto:"#245c31", icone:"🍽"},
+
+        {fundo:"#dceffc", faixa:"#9bd0f5", texto:"#204c72", icone:"☾"}
+
+    ];
+
+    function arredondado(x,y,w,h,r,cor) {
+
+        ctx.fillStyle=cor; ctx.beginPath(); ctx.roundRect(x,y,w,h,r); ctx.fill();
+
+    }
+
+    function texto(txt,x,y,tam=24,cor="#142638",peso="600") {
+
+        ctx.fillStyle=cor; ctx.font=`${peso} ${tam}px Arial, sans-serif`;
+
+        ctx.fillText(txt,x,y);
+
+    }
+
+    function quebrar(txt,max,tam=21,peso="500") {
+
+        ctx.font=`${peso} ${tam}px Arial, sans-serif`;
+
+        const palavras=String(txt).split(/\s+/), linhas=[]; let atual="";
+
+        for (const palavra of palavras) {
+
+            const tentativa=atual ? `${atual} ${palavra}` : palavra;
+
+            if (ctx.measureText(tentativa).width <= max || !atual) atual=tentativa;
+
+            else { linhas.push(atual); atual=palavra; }
+
+        }
+
+        if(atual) linhas.push(atual);
+
+        return linhas;
+
+    }
+
+    // Medir os cards antes de definir a altura do PNG (não corta cozinheiras).
+
+    function dimensoesCard(pessoa) {
+
+        const nomes=quebrar(pessoa.nome,coluna-116,24,"700");
+
+        const funcoes=pessoa.funcoes.flatMap(f=>quebrar("• " + f,coluna-118,20,"500"));
+
+        return {nomes,funcoes,altura:Math.max(118,32 + nomes.length*30 + 10 + funcoes.length*27 + 17)};
+
+    }
+
+    const blocos=periodosCozinha.map((nome,i)=>{
+
+        const pessoas=gruposDaEscala(nome);
+
+        const linhas=[];
+
+        for(let j=0;j<pessoas.length;j+=2){
+
+            const cards=pessoas.slice(j,j+2).map(p=>({p,...dimensoesCard(p)}));
+
+            linhas.push({cards,altura:Math.max(...cards.map(c=>c.altura))});
+
+        }
+
+        const altura=86+20+(linhas.length ? linhas.reduce((n,l)=>n+l.altura,0)+(linhas.length-1)*14 : 65)+22;
+
+        return {nome,cor:cores[i],linhas,altura};
+
+    });
+
+    const alturaTotal=178+blocos.reduce((n,b)=>n+b.altura+18,0)+38;
+
+    const escala=2; canvas.width=largura*escala; canvas.height=alturaTotal*escala;
+
+    ctx.scale(escala,escala);
+
+    arredondado(0,0,largura,alturaTotal,0,"#071d2c");
+
+    arredondado(margem,28,largura-2*margem,122,24,"#123147");
+
+    texto("ESCALA DA COZINHA ESCOLAR",margem+32,83,39,"#ffffff","800");
+
+    const data=obterDataEscala().split("-").reverse().join("/");
+
+    texto(`Data: ${data}  •  Equipe e atribuições`,margem+32,122,23,"#c8e0ee","500");
+
+    let y=178;
+
+    for (const bloco of blocos) {
+
+        arredondado(margem,y,largura-2*margem,bloco.altura,23,bloco.cor.fundo);
+
+        arredondado(margem,y,largura-2*margem,74,23,bloco.cor.faixa);
+
+        // Preenche a base do cabeçalho para manter apenas os cantos superiores arredondados.
+
+        ctx.fillStyle=bloco.cor.faixa;ctx.fillRect(margem,y+45,largura-2*margem,29);
+
+        texto(bloco.nome.toLocaleUpperCase("pt-BR"),margem+28,y+49,30,bloco.cor.texto,"800");
+
+        let linhaY=y+94;
+
+        if (!bloco.linhas.length) {
+
+            texto("Nenhuma função cadastrada neste período",margem+26,linhaY+34,22,bloco.cor.texto,"500");
+
+        }
+
+        for(const linha of bloco.linhas) {
+
+            linha.cards.forEach((card,j)=>{
+
+                const x=margem+14+j*(coluna+espaco);
+
+                arredondado(x,linhaY,coluna,linha.altura,17,"#ffffff");
+
+                arredondado(x+15,linhaY+18,52,52,26,"#f2c56e");
+
+                texto(card.p.nome.charAt(0).toLocaleUpperCase("pt-BR") || "?",x+31,linhaY+53,27,"#422e16","800");
+
+                let ty=linhaY+35;
+
+                for(const nomeLinha of card.nomes){texto(nomeLinha,x+82,ty,24,"#102a3c","700");ty+=30;}
+
+                ty+=9;
+
+                for(const f of card.funcoes){texto(f,x+82,ty,20,"#3a5565","500");ty+=27;}
+
+            });
+
+            linhaY+=linha.altura+14;
+
+        }
+
+        y+=bloco.altura+18;
+
+    }
+
+    texto("GestãoPro  •  Cozinha Escolar",margem+8,alturaTotal-22,18,"#b4cddd","500");
+
+    return canvas;
+
+}
+
+async function obterImagemEscala() {
+
+    // Reconsulta o backend para não exportar uma escala desatualizada.
+
+    const resposta=await fetch(`/api/funcoes?data=${obterDataEscala()}`,{cache:"no-store"});
+
+    if(!resposta.ok) throw new Error("Não foi possível atualizar a escala no servidor.");
+
+    const dados=await resposta.json();
+
+    if(!Array.isArray(dados)) throw new Error("Resposta inválida da API de funções.");
+
+    funcoesEscalaAtual=dados.map(item=>({...item,funcao:nomeFuncaoLimpo(item.funcao)}));
+
+    renderizarVisaoCozinha(funcoesEscalaAtual);
+
+    atualizarContagemFuncoes();
+
+    atualizarStatusVisual();
+
+    const canvas=desenharEscalaCanvas();
+
+    const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("Falha ao criar PNG.")),"image/png"));
+
+    return {blob,nome:`escala-cozinha-${obterDataEscala()}.png`};
+
+}
+
+async function gerarImagemEscala() {
+
+    const botao=document.getElementById("btnGerarImagem");
+
+    botao.disabled=true;
+
+    try {
+
+        const {blob,nome}=await obterImagemEscala();
+
+        const url=URL.createObjectURL(blob);
+
+        const link=document.createElement("a");link.href=url;link.download=nome;
+
+        document.body.appendChild(link);link.click();link.remove();
+
+        setTimeout(()=>URL.revokeObjectURL(url),30000);
+
+    } catch(erro) {console.error(erro);alert(erro.message || "Erro ao gerar imagem.");}
+
+    finally {botao.disabled=false;}
+
+}
+
+async function compartilharImagemEscala() {
+
+    const botao=document.getElementById("btnCompartilharImagem");
+
+    botao.disabled=true;
+
+    try {
+
+        const {blob,nome}=await obterImagemEscala();
+
+        const arquivo=new File([blob],nome,{type:"image/png"});
+
+        if(navigator.share && navigator.canShare?.({files:[arquivo]})) {
+
+            await navigator.share({files:[arquivo],title:"Escala da cozinha escolar"});
+
+        } else {
+
+            alert("O compartilhamento direto de imagens não está disponível neste navegador. Use 'Gerar imagem da escala' e envie o PNG pelo WhatsApp.");
+
+        }
+
+    } catch(erro) {
+
+        if(erro.name!=="AbortError") {console.error(erro);alert(erro.message || "Erro ao compartilhar imagem.");}
+
+    } finally {botao.disabled=false;}
+
+}
+
+async function copiarEscala() {
+
+    const data = obterDataEscala().split("-").reverse().join("/");
+
+    const linhas = [`ESCALA DA COZINHA ESCOLAR - ${data}`];
+
+    periodosCozinha.forEach(periodo => {
+
+        linhas.push("", periodo.toLocaleUpperCase("pt-BR"));
+
+        const itens = funcoesEscalaAtual.filter(item =>
+
+            String(item.periodo ?? "").trim().toLocaleLowerCase("pt-BR") ===
+
+            periodo.toLocaleLowerCase("pt-BR")
+
+        );
+
+        if (!itens.length) linhas.push("Nenhuma função cadastrada.");
+
+        itens.forEach(item => linhas.push(
+
+            `${item.funcionario?.nome ?? "Funcionário não identificado"} - ${item.funcao ?? "Função não informada"}`
+
+        ));
+
+    });
+
+    try {
+
+        await navigator.clipboard.writeText(linhas.join("\n"));
+
+        alert("Escala atual copiada para o grupo!");
+
+    } catch (erro) {
+
+        console.error("Erro ao copiar escala:", erro);
+
+        alert("Não foi possível copiar automaticamente. Verifique a permissão do navegador.");
+
+    }
+
+}
+
+/* =========================
+
+   FECHAR LISTA
+
+\========================= */
+
+document.addEventListener(
+
+    "click",
+
+    function(event) {
+
+        const campo =
+
+            document.querySelector(".campo");
+
+        const lista =
+
+            document.getElementById(
+
+                "listaFuncionarios"
+
+            );
+
+        if (
+
+            campo &&
+
+            !campo.contains(event.target)
+
+        ) {
+
+            lista.classList.remove(
+
+                "aberta"
+
+            );
+
+        }
+
+    }
+
+);
+
+/* =========================
+
+   TEMA
+
+\========================= */
+
+function mudarTema(tema) {
+
+    const claro =
+
+        tema === "claro";
+
+    document.body.classList.toggle(
+
+        "tema-claro",
+
+        claro
+
+    );
+
+    document
+
+        .getElementById("temaClaro")
+
+        .classList.toggle(
+
+            "ativo",
+
+            claro
+
+        );
+
+    document
+
+        .getElementById("temaEscuro")
+
+        .classList.toggle(
+
+            "ativo",
+
+            !claro
+
+        );
+
+    localStorage.setItem(
+
+        "gestaopro-tema",
+
+        tema
+
+    );
+
+}
+
+(function carregarTema() {
+
+    const tema =
+
+        localStorage.getItem(
+
+            "gestaopro-tema"
+
+        ) || "escuro";
+
+    mudarTema(tema);
+
+})();
+
+/* =========================
+
+   INICIAR
+
+\========================= */
+
+carregarFuncionarios();
+
+renderizarFuncoes();
+
+carregarTabelaFuncoes();
+
+async function carregarTabelaFuncoes() {
+
+    const data = obterDataEscala();
+
+    try {
+
+        const resposta = await fetch(
+
+            `/api/funcoes?data=${data}`
+
+        );
+
+        if (!resposta.ok) {
+
+            throw new Error("Erro ao buscar funções.");
+
+        }
+
+        const funcoes = await resposta.json();
+
+        funcoesEscalaAtual = Array.isArray(funcoes) ? funcoes.map(item => ({...item, funcao: nomeFuncaoLimpo(item.funcao)})) : [];
+
+        atualizarContagemFuncoes();
+
+        renderizarVisaoCozinha(funcoesEscalaAtual);
+
+        atualizarStatusVisual();
+
+        const tabela =
+
+            document.getElementById("tabelaFuncoes");
+
+        tabela.innerHTML = "";
+
+        funcoesEscalaAtual.forEach(item => {
+
+            const linha = document.createElement("tr");
+
+            linha.innerHTML = `
+
+                <td>
+
+                    ${item.funcionario.nome}
+
+                </td>
+
+                <td>
+
+                    <span class="tag-funcao">
+
+                        ${item.funcao}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    ${item.periodo}
+
+                </td>
+
+                <td>
+
+                    <span class="badge verde">
+
+                        ● Completo
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button
+
+                        class="btn"
+
+                        onclick="editarFuncao(${item.id})">
+
+                        Editar
+
+                    </button>
+
+                    <button
+
+                        class="btn"
+
+                        onclick="deletarFuncao(${item.id})">
+
+                        Deletar
+
+                    </button>
+
+                </td>
+
+            `;
+
+            tabela.appendChild(linha);
+
+        });
+
+    } catch (erro) {
+
+        console.error("Erro ao carregar escala:", erro);
+
+        funcoesEscalaAtual = [];
+
+        atualizarStatusVisual();
+
+        periodosCozinha.forEach((_, indice) => {
+
+            const destino = document.getElementById(`cozinha-periodo-${indice}`);
+
+            if (destino) destino.textContent = "Não foi possível carregar a escala.";
+
+        });
+
+    }
+
+}
+
+carregarTabelaFuncoes();
+
+async function editarFuncao(id) {
+
+    const novaFuncao = prompt("Digite a nova função:");
+
+    if (novaFuncao === null) {
+
+        return;
+
+    }
+
+    const novoPeriodo = prompt("Digite o novo período:");
+
+    if (novoPeriodo === null) {
+
+        return;
+
+    }
+
+    try {
+
+        const resposta = await fetch(
+
+            `/api/funcoes/${id}`,
+
+            {
+
+                method: "PUT",
+
+                headers: {
+
+                    "Content-Type": "application/json"
+
+                },
+
+                body: JSON.stringify({
+
+                    funcao: novaFuncao,
+
+                    periodo: novoPeriodo,
+
+                    observacao: "",
+
+                    responsavel: "Sistema"
+
+                })
+
+            }
+
+        );
+
+        if (!resposta.ok) {
+
+            throw new Error("Erro ao editar função.");
+
+        }
+
+        alert("Função alterada com sucesso! 🟢");
+
+        carregarTabelaFuncoes();
+
+    } catch (erro) {
+
+        console.error("Erro ao editar:", erro);
+
+        alert("Erro ao editar a função.");
+
+    }
+
+}
+
+async function deletarFuncao(id) {
+
+    const confirmar = confirm(
+
+        "Tem certeza que deseja excluir esta função?"
+
+    );
+
+    if (!confirmar) {
+
+        return;
+
+    }
+
+    try {
+
+        const resposta = await fetch(
+
+            `/api/funcoes/${id}?responsavel=Sistema`,
+
+            {
+
+                method: "DELETE"
+
+            }
+
+        );
+
+        if (!resposta.ok) {
+
+            throw new Error("Erro ao excluir função.");
+
+        }
+
+        alert("Função excluída com sucesso! 🟢");
+
+        carregarTabelaFuncoes();
+
+    } catch (erro) {
+
+        console.error("Erro ao excluir:", erro);
+
+        alert("Erro ao excluir a função.");
+
+    }
+
+}
+
+/* ==== ESCALA SEMANAL: usa as APIs já criadas no Spring Boot ==== */
+
+let dataEscalaSelecionada = obterDataAtual();
+
+let inicioSemanaEscala = segundaFeira(dataEscalaSelecionada);
+
+let registrosDiasEscala = new Map();
+
+function obterDataEscala(){return dataEscalaSelecionada || obterDataAtual();}
+
+function parseDataLocal(iso){const [a,m,d]=iso.split('-').map(Number);return new Date(a,m-1,d,12);}
+
+function isoLocal(data){return `${data.getFullYear()}-${String(data.getMonth()+1).padStart(2,'0')}-${String(data.getDate()).padStart(2,'0')}`;}
+
+function adicionarDias(iso,quantidade){const d=parseDataLocal(iso);d.setDate(d.getDate()+quantidade);return isoLocal(d);}
+
+function segundaFeira(iso){const d=parseDataLocal(iso);d.setDate(d.getDate()-((d.getDay()+6)%7));return isoLocal(d);}
+
+function dataCurta(iso){return iso.split('-').slice(1).reverse().join('/');}
+
+function dataLonga(iso){return new Intl.DateTimeFormat('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(parseDataLocal(iso));}
+
+const rotulosStatusEscala={PENDENTE:'🕒 Pendente',PLANEJADO:'🔄 Em andamento',PUBLICADO:'✓ Concluído',SEM_EXPEDIENTE:'▣ Sem expediente'};
+
+async function consultarJSON(url){const resposta=await fetch(url,{cache:'no-store'});if(!resposta.ok)throw new Error(`Erro HTTP ${resposta.status}`);return resposta.json();}
+
+async function atualizarSemanaEscala(){
+
+  const fim=adicionarDias(inicioSemanaEscala,4);
+
+  document.getElementById('semanaIntervalo').textContent=`${dataCurta(inicioSemanaEscala)} a ${dataCurta(fim)}`;
+
+  const painel=document.getElementById('semanaDias');
+
+  painel.textContent='Carregando escalas...';
+
+  try{
+
+    const dias=await consultarJSON(`/api/escalas?inicio=${inicioSemanaEscala}&fim=${fim}`);
+
+    registrosDiasEscala=new Map(dias.map(d=>[d.dataEscala,d]));
+
+    const datas=Array.from({length:5},(_,i)=>adicionarDias(inicioSemanaEscala,i));
+
+    const resultados=await Promise.allSettled(datas.map(data=>consultarJSON(`/api/funcoes?data=${data}`)));
+
+    painel.replaceChildren();
+
+    datas.forEach((data,i)=>{
+
+      const registro=registrosDiasEscala.get(data);
+
+      const status=registro?.status || 'PENDENTE';
+
+      const funcoes=resultados[i].status==='fulfilled'&&Array.isArray(resultados[i].value)?resultados[i].value:null;
+
+      const nomes=['Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira'];
+
+      const botao=document.createElement('button');botao.type='button';botao.className='semana-dia'+(data===dataEscalaSelecionada?' selecionado':'');botao.dataset.status=status;
+
+      const info=status==='SEM_EXPEDIENTE'?'Não haverá atividades':funcoes===null?'Não foi possível consultar funções':`${funcoes.length} funções · ${new Set(funcoes.map(f=>f.funcionario?.id).filter(Boolean)).size} funcionárias`;
+
+      // Texto vindo do servidor é inserido apenas com textContent, sem HTML dinâmico.
+
+      const topo=document.createElement('div');topo.className='semana-dia-topo';
+
+      const nome=document.createElement('span');nome.className='semana-dia-nome';nome.textContent=nomes[i];
+
+      const badge=document.createElement('span');badge.className='semana-badge';badge.textContent=rotulosStatusEscala[status]||status;
+
+      topo.append(nome,badge);
+
+      const numero=document.createElement('div');numero.className='semana-dia-data';numero.textContent=dataCurta(data);
+
+      const detalhe=document.createElement('div');detalhe.className='semana-dia-info';detalhe.textContent=info;
+
+      const acao=document.createElement('span');acao.className='semana-dia-acao';acao.textContent=status==='PENDENTE'?'Organizar escala →':'Ver escala →';
+
+      botao.append(topo,numero,detalhe,acao);botao.addEventListener('click',()=>selecionarDiaEscala(data));painel.appendChild(botao);
+
+    });
+
+    const registroAtual=registrosDiasEscala.get(dataEscalaSelecionada);
+
+    atualizarBotoesDia();
+
+    document.getElementById('semanaSelecionada').textContent=`Dia selecionado: ${dataLonga(dataEscalaSelecionada)}`;
+
+  }catch(erro){console.error(erro);painel.textContent='Não foi possível carregar a semana. Verifique se a API /api/escalas está funcionando.';}
+
+}
+
+async function selecionarDiaEscala(data){
+
+  dataEscalaSelecionada=data;
+
+  if(segundaFeira(data)!==inicioSemanaEscala)inicioSemanaEscala=segundaFeira(data);
+
+  await atualizarSemanaEscala();
+
+  await carregarTabelaFuncoes();
+
+}
+
+document.getElementById('semanaAnterior').addEventListener('click',()=>{inicioSemanaEscala=adicionarDias(inicioSemanaEscala,-7);atualizarSemanaEscala();});
+
+document.getElementById('semanaProxima').addEventListener('click',()=>{inicioSemanaEscala=adicionarDias(inicioSemanaEscala,7);atualizarSemanaEscala();});
+
+document.getElementById('semanaHoje').addEventListener('click',()=>selecionarDiaEscala(obterDataAtual()));
+
+// Altera o status do dia apenas após confirmação de gravação no servidor.
+async function gravarStatusDia(data, status) {
+  const resposta = await fetch('/api/escalas', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({dataEscala: data, status, observacao: null})
+  });
+  if (!resposta.ok) {
+    const detalhes = await resposta.text();
+    throw new Error(`HTTP ${resposta.status}: ${detalhes.slice(0, 250)}`);
+  }
+  return resposta.json();
+}
+
+function atualizarBotoesDia() {
+  const status = registrosDiasEscala.get(dataEscalaSelecionada)?.status || 'PENDENTE';
+  const semExpediente = document.getElementById('semExpedienteDia');
+  const finalizar = document.getElementById('finalizarEscalaDia');
+  semExpediente.textContent = status === 'SEM_EXPEDIENTE' ? '↩ Reabrir dia' : '⚪ Marcar sem expediente';
+  finalizar.textContent = status === 'PUBLICADO' ? '↩ Reabrir escala' : '✓ Finalizar escala do dia';
+  finalizar.disabled = status === 'SEM_EXPEDIENTE';
+  finalizar.title = status === 'SEM_EXPEDIENTE' ? 'Reabra o dia para cadastrar e finalizar funções.' : '';
+}
+
+document.getElementById('semExpedienteDia').addEventListener('click', async () => {
+  const botao = document.getElementById('semExpedienteDia');
+  const data = dataEscalaSelecionada;
+  const statusAtual = registrosDiasEscala.get(data)?.status || 'PENDENTE';
+  const reabrir = statusAtual === 'SEM_EXPEDIENTE';
+  const novoStatus = reabrir ? 'PENDENTE' : 'SEM_EXPEDIENTE';
+  if (!reabrir) {
+    let funcoes;
+    try { funcoes = await consultarJSON(`/api/funcoes?data=${data}`); }
+    catch (erro) { alert('Não foi possível verificar as funções do dia. Tente novamente.'); return; }
+    const aviso = funcoes.length ? 'Já existem funções cadastradas neste dia. Elas NÃO serão excluídas.\n\n' : '';
+    if (!confirm(`${aviso}Marcar ${dataLonga(data)} como SEM EXPEDIENTE?`)) return;
+  } else if (!confirm(`Reabrir ${dataLonga(data)} para organizar a escala?`)) return;
+  botao.disabled = true;
+  try {
+    await gravarStatusDia(data, novoStatus);
+    await atualizarSemanaEscala();
+    alert(reabrir ? 'Dia reaberto com sucesso!' : 'Dia marcado como Sem expediente e salvo no banco!');
+  } catch (erro) {
+    console.error('Erro ao salvar dia:', erro);
+    alert(`Não foi possível salvar o dia. ${erro.message}`);
+  } finally { botao.disabled = false; }
+});
+
+document.getElementById('finalizarEscalaDia').addEventListener('click', async () => {
+  const botao = document.getElementById('finalizarEscalaDia');
+  const data = dataEscalaSelecionada;
+  const status = registrosDiasEscala.get(data)?.status || 'PENDENTE';
+  if (status === 'SEM_EXPEDIENTE') return;
+  const reabrir = status === 'PUBLICADO';
+  if (!reabrir) {
+    let funcoes;
+    try { funcoes = await consultarJSON(`/api/funcoes?data=${data}`); }
+    catch (erro) { alert('Não foi possível verificar as funções cadastradas.'); return; }
+    if (!Array.isArray(funcoes) || !funcoes.length) {
+      alert('Cadastre pelo menos uma função antes de finalizar este dia.'); return;
+    }
+  }
+  if (!confirm(reabrir ? `Reabrir a escala de ${dataLonga(data)}?` : `Finalizar a escala de ${dataLonga(data)}?`)) return;
+  botao.disabled = true;
+  try {
+    await gravarStatusDia(data, reabrir ? 'PLANEJADO' : 'PUBLICADO');
+    await atualizarSemanaEscala();
+    alert(reabrir ? 'Escala reaberta!' : 'Escala finalizada e salva com sucesso!');
+  } catch (erro) {
+    console.error('Erro ao salvar escala:', erro);
+    alert(`Não foi possível salvar a escala. ${erro.message}`);
+  } finally { botao.disabled = false; }
+});
+
+// Atualiza os cartões depois de salvar, editar ou excluir funções.
+
+const carregarTabelaFuncoesOriginal=carregarTabelaFuncoes;
+
+carregarTabelaFuncoes=async function(...args){const resultado=await carregarTabelaFuncoesOriginal(...args);if(document.getElementById('semanaDias'))await atualizarSemanaEscala();return resultado;};
+
+atualizarSemanaEscala();
+
+</script>
+
+</body>
+
+</html>
